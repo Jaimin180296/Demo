@@ -1,9 +1,6 @@
 name: Source Workflow
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - '*'
       
 run-name: ${{ github.actor }} is testing out GitHub Actions  🚀
 
