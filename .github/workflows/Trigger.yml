@@ -15,7 +15,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: '${{ secrets.PAT_GITHUB_TOKEN }}'
-          repository: username/target repository name 
+          repository: Jaimin180296/JenkinsTest
           event-type: Integration-with-Automation
       - name: my-step
         run: 'echo ${{ github.actor }} Hello !'
