@@ -8,7 +8,7 @@ public class BrowserStackFailureTest extends  SeleniumTest {
 
         @Test(invocationCount = 2)
         public void failureTest(ITestContext testContext) throws Exception {
-            int currentCount = testContext.getAllTestMethods()[0].getCurrentInvocationCount();
+            int currentCount = testContext.getAllTestMethods()[0].getCurrentInvocationCount(); 
                 
             System.out.println("Executing count: " + currentCount);
             driver.get("https://www.bstackdemo.com");
