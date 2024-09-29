@@ -45,4 +45,3 @@ jobs:
       with:
         name: testng-junit-report
         path: QD_sample_java_test/target/surefire-reports/junitreports
-Firefoxfixes (#1274) · browserstack/qa-common-scripts@c8f201d
