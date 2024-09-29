@@ -1,16 +1,21 @@
-name: Workflow A
-
+name: Source Workflow
 on:
- workflow_dispatch:
+  workflow_dispatch:
+  push:
+    branches:
+      - '*'
+      
+run-name: ${{ github.actor }} is testing out GitHub Actions  🚀
 
 jobs:
-  trigger-workflow:
+  trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Workflow B
-        run: |
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.PAT_GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/Jaimin180296/JenkinsTest/dispatches \
-            -d '{"event_type":"trigger-workflow-b"}
+      - name: trigger the automated test in another repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: '${{ secrets.PAT_GITHUB_TOKEN }}'
+          repository: username/target repository name 
+          event-type: Integration-with-Automation
+      - name: my-step
+        run: 'echo ${{ github.actor }} Hello !'
