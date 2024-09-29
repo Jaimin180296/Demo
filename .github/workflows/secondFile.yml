@@ -1,0 +1,17 @@
+name: Second Workflow
+
+on:
+  workflow_run:
+    workflows: ["First Workflow"]  # Name of the first workflow
+    types:
+      - completed
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run another task
+        run: echo "Second workflow has been triggered!"
