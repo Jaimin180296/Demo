@@ -4,8 +4,6 @@
 name: single passTest workflow
 
 on:
-  schedule :
-   - cron: '*/5 * * * *'
   workflow_dispatch:
   workflow_call:
     secrets:
