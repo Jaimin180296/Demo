@@ -1,47 +1,16 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
-
-name: single passTest workflow
+name: First Workflow
 
 on:
-  workflow_dispatch:
-  workflow_call:
-    secrets:
-      BROWSERSTACK_USERNAME:
-        required: true
-      BROWSERSTACK_ACCESS_KEY:
-        required: true
+  push:
+    branches:
+      - main  # Change this to your desired branch
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup Browserstack env
-      uses: browserstack/github-actions/setup-env@master
-      with:
-        username:  ${{ secrets.BROWSERSTACK_USERNAME }}
-        access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-
-    - name: Build with Maven
-      run:  mvn -f QD_sample_java_test/pom.xml clean test -Dsurefire.suiteXmlFiles=config/passtest.xml
-
-    - name: Archive code TestNG results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: testng-junit-report
-        path: QD_sample_java_test/target/surefire-reports/junitreports
+      - name: Run some task
+        run: echo "First workflow completed successfully!"
