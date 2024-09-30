@@ -14,4 +14,4 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" \
           -H "Authorization: token ${{ secrets.PAT_GITHUB_TOKEN }}" \
           https://api.github.com/repos/browserstack/qa-common-scripts/actions/workflows/qd-single-job.yml/dispatches \
-          -d '{"ref":"main"}'
+          -d '{"ref":"master"}'
